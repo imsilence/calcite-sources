@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "defaultSchema": "iam",
+  "schemas": [
+    {
+      "name": "iam",
+      "type": "custom",
+      "factory": "com.silence.calcite.sources.v3.CSVSchemaFactory",
+      "operand": {
+        "directory": "iam",
+        "flavor": "FILTERABLE"
+      },
+      "tables": [
+        {
+          "name": "g1_user",
+          "type": "view",
+          "sql": "select \"u\".* from \"user\" as \"u\" left join \"group\" as \"g\" on \"u\".\"group\" = \"g\".\"id\" where \"g\".\"name\" = 'csv-g1'"
+        },
+        {
+          "name": "g2_user",
+          "type": "view",
+          "sql": "select \"u\".* from \"user\" as \"u\" left join \"group\" as \"g\" on \"u\".\"group\" = \"g\".\"id\" where \"g\".\"name\" = 'csv-g2'"
+        }
+      ]
+    }
+  ]
+}

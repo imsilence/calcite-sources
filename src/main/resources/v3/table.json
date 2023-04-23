@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "defaultSchema": "iam",
+  "schemas": [
+    {
+      "name": "iam",
+      "tables": [
+        {
+          "name": "role",
+          "type": "custom",
+          "factory": "com.silence.calcite.sources.v3.CSVTableFactory",
+          "operand": {
+            "path": "iam/group.csv",
+            "flavor": "SCANNABLE"
+          }
+        },
+        {
+          "name": "group",
+          "type": "custom",
+          "factory": "com.silence.calcite.sources.v3.CSVTableFactory",
+          "operand": {
+            "path": "iam/group.csv",
+            "flavor": "SCANNABLE"
+          }
+        },
+        {
+          "name": "user",
+          "type": "custom",
+          "factory": "com.silence.calcite.sources.v3.CSVTableFactory",
+          "operand": {
+            "path": "iam/user.csv",
+            "flavor": "FILTERABLE"
+          }
+        }
+      ]
+    }
+  ]
+}
